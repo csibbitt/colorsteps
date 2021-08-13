@@ -1,4 +1,6 @@
 from pygame import Color
+from gradient_tools import linear_gradient
+
 CGA = [
     Color('#000000'),
     Color('#0000aa'),
@@ -88,4 +90,14 @@ EGA = [
     Color('#C0C0C0')
 ]
 
-ALL_PALETTES = [{'name': 'CGA', 'colors': CGA}, {'name': 'EGA', 'colors': EGA}]
+LINEAR_16 = [Color(code) for code in linear_gradient('#000000', '#00FF00', 16)['hex']]
+LINEAR_64 = [Color(code) for code in linear_gradient('#000000', '#00FF00', 64)['hex']]
+LINEAR_256 = [Color(code) for code in linear_gradient('#000000', '#00FF00', 256)['hex']]
+
+ALL_PALETTES = [
+    {'name': 'CGA', 'colors': CGA}, 
+    {'name': 'EGA', 'colors': EGA},
+    {'name': 'LINEAR_16', 'colors': LINEAR_16},
+    {'name': 'LINEAR_64', 'colors': LINEAR_64},
+    {'name': 'LINEAR_256', 'colors': LINEAR_256},
+]
