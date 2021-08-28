@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Colour Steps</title>
+    <script type="text/javascript">
+var c = 0xfa8080;
+function update() {
+    // This is HTML notation so pad zeroes up to six hex characters
+    hexs = "#" + c.toString(16).padStart(6, '0');
+    // Update the actual background-color of <body>
+    document.body.style.backgroundColor = hexs;
+    // And update the value shown in the info box
+    document.getElementById("info-value").innerHTML = hexs;
+}
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    bgcolour = window.getComputedStyle(document.body, null).getPropertyValue('background-color');
+    if (evt.keyCode == 82) {        // r
+	if (evt.shiftKey && ((c & 0xff0000) < 0xff0000)) {
+	    c += 0x010000;
+	} else if (!evt.shiftKey && (c & 0xff0000) > 0) {
+	    c -= 0x010000;
+	}
+    } else if (evt.keyCode == 71) { // g
+	if (evt.shiftKey && ((c & 0x00ff00) < 0x00ff00)) {
+	    c += 0x000100;
+	} else if (!evt.shiftKey && (c & 0x00ff00) > 0) {
+	    c -= 0x000100;
+	}
+    } else if (evt.keyCode == 66) { // b
+	if (evt.shiftKey && ((c & 0x0000ff) < 0x0000ff)) {
+	    c += 0x000001;
+	} else if (!evt.shiftKey && (c & 0x0000ff) > 0) {
+	    c -= 0x000001;
+	}
+    }
+    update();
+};
+    </script>
+    <style>
+body {
+  margin: 0;
+  padding: 0;
+}
+div#info {
+  width: 100%;
+  text-align: center;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: monospace;
+  font-size: large;
+}
+</style>
+  </head>
+    <body onload="update()">
+    <div id="info"><span id="info-value">#</span></div>
+  </body>
+</html>
