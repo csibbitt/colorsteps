@@ -48,11 +48,16 @@ div#info {
   background-color: #000000;
   color: #ffffff;
   font-family: monospace;
-  font-size: large;
 }
-</style>
+span#info-value {
+    font-size: xx-large;
+}
+    </style>
   </head>
     <body onload="update()">
-    <div id="info"><span id="info-value">#</span></div>
+      <div id="info">
+	<div>Press 'r', 'g', or 'b' to move down one colour. Hold SHIFT key to move up.</div><br />
+	<span id="info-value">#</span>
+      </div>
   </body>
 </html>
